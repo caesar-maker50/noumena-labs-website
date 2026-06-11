@@ -576,7 +576,7 @@ h3 {
 .problem {
   display: grid;
   grid-template-columns: minmax(280px, 0.42fr) minmax(0, 0.68fr);
-  gap: clamp(48px, 7vw, 108px);
+  gap: clamp(38px, 6vw, 84px);
   align-items: start;
 }
 
@@ -587,8 +587,10 @@ h3 {
 }
 
 .problemIntro h2 {
-  margin-top: 18px;
-  max-width: 530px;
+  max-width: 470px;
+  margin-top: 16px;
+  font-size: clamp(1.8rem, 2.65vw, 2.25rem);
+  line-height: 1.04;
 }
 
 .diagnosticSignals {
@@ -597,9 +599,9 @@ h3 {
 
 .diagnosticSignal {
   display: grid;
-  grid-template-columns: 88px minmax(0, 1fr);
-  gap: clamp(22px, 3vw, 38px);
-  padding: clamp(30px, 4.8vw, 54px) 0;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: clamp(18px, 2.4vw, 30px);
+  padding: clamp(22px, 3.55vw, 40px) 0;
   border-top: 1px solid rgba(152, 132, 116, 0.2);
   opacity: 0;
   transform: translateY(16px);
@@ -614,21 +616,35 @@ h3 {
 }
 
 .problemActive .diagnosticSignal {
-  opacity: 1;
+  opacity: 0.58;
   transform: translateY(0);
 }
 
+.problemActive .diagnosticSignal.past {
+  opacity: 0.72;
+}
+
+.problemActive .diagnosticSignal.upcoming {
+  opacity: 0.5;
+}
+
+.problemActive .diagnosticSignal.active {
+  opacity: 1;
+}
+
+.diagnosticSignal.active .diagnosticNumber,
+.diagnosticSignal.active h3,
 .diagnosticSignal:hover .diagnosticNumber,
 .diagnosticSignal:hover h3 {
   color: var(--accent-deep);
 }
 
 .diagnosticNumber {
-  color: rgba(65, 43, 30, 0.2);
+  color: rgba(65, 43, 30, 0.16);
   font-family: var(--heading);
-  font-size: clamp(2.4rem, 4.2vw, 4.75rem);
-  font-weight: 800;
-  line-height: 0.9;
+  font-size: clamp(1.65rem, 2.8vw, 2.85rem);
+  font-weight: 650;
+  line-height: 1;
   letter-spacing: -0.02em;
   transition: color 180ms ease;
 }
@@ -640,18 +656,18 @@ h3 {
 .diagnosticCopy h3 {
   color: #382c25;
   font-family: var(--body);
-  font-size: clamp(1.75rem, 3vw, 2.25rem);
-  font-weight: 600;
-  line-height: 1.16;
+  font-size: clamp(1.625rem, 2.2vw, 1.875rem);
+  font-weight: 560;
+  line-height: 1.2;
   letter-spacing: 0;
   transition: color 180ms ease;
 }
 
 .diagnosticCopy p {
-  margin-top: 8px;
+  margin-top: 6px;
   color: rgba(83, 62, 48, 0.68);
-  font-size: clamp(1.12rem, 1.55vw, 1.25rem);
-  line-height: 1.45;
+  font-size: clamp(1rem, 1.35vw, 1.12rem);
+  line-height: 1.48;
 }
 
 .teamGrid {
@@ -1546,7 +1562,7 @@ h3 {
 
   .problem {
     grid-template-columns: 1fr;
-    gap: 34px;
+    gap: 28px;
   }
 
   .problemIntro {
@@ -1695,21 +1711,21 @@ h3 {
 
   .diagnosticSignal {
     grid-template-columns: 1fr;
-    gap: 14px;
-    padding: 28px 0;
+    gap: 10px;
+    padding: 22px 0;
   }
 
   .diagnosticNumber {
-    font-size: clamp(2.2rem, 14vw, 3.2rem);
+    font-size: clamp(1.85rem, 11vw, 2.45rem);
   }
 
   .diagnosticCopy h3 {
-    font-size: clamp(1.55rem, 7vw, 1.95rem);
+    font-size: clamp(1.35rem, 6.1vw, 1.65rem);
     line-height: 1.2;
   }
 
   .diagnosticCopy p {
-    font-size: clamp(1.02rem, 4.8vw, 1.12rem);
+    font-size: clamp(0.98rem, 4.2vw, 1.06rem);
   }
 
   .processIntro {

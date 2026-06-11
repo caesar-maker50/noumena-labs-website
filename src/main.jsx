@@ -346,6 +346,31 @@ function Thesis() {
 
 function Problem() {
   const [problemRef, isActive] = useRevealOnce(0.18);
+  const [activeSignal, setActiveSignal] = useState(0);
+
+  useEffect(() => {
+    const section = problemRef.current;
+    if (!section) return undefined;
+
+    const signals = Array.from(section.querySelectorAll(".diagnosticSignal"));
+    if (!signals.length) return undefined;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => Math.abs(a.boundingClientRect.top) - Math.abs(b.boundingClientRect.top));
+
+        if (visible[0]) {
+          setActiveSignal(Number(visible[0].target.dataset.signalIndex));
+        }
+      },
+      { rootMargin: "-34% 0px -48% 0px", threshold: 0 }
+    );
+
+    signals.forEach((signal) => observer.observe(signal));
+    return () => observer.disconnect();
+  }, [problemRef]);
 
   return (
     <section id="problem" ref={problemRef} className={isActive ? "section problem problemActive" : "section problem"}>
@@ -354,15 +379,24 @@ function Problem() {
         <h2>AI is a pressure test on how your organisation thinks, decides, and holds together.</h2>
       </div>
       <div className="diagnosticSignals">
-        {problems.map(({ title, body }, index) => (
-          <article className="diagnosticSignal" key={title} style={{ "--signal-delay": `${index * 90}ms` }}>
-            <span className="diagnosticNumber">{String(index + 1).padStart(2, "0")}</span>
-            <div className="diagnosticCopy">
-              <h3>{title}</h3>
-              {body ? <p>{body}</p> : null}
-            </div>
-          </article>
-        ))}
+        {problems.map(({ title, body }, index) => {
+          const signalState = index === activeSignal ? "active" : index < activeSignal ? "past" : "upcoming";
+
+          return (
+            <article
+              className={`diagnosticSignal ${signalState}`}
+              data-signal-index={index}
+              key={title}
+              style={{ "--signal-delay": `${index * 70}ms` }}
+            >
+              <span className="diagnosticNumber">{String(index + 1).padStart(2, "0")}</span>
+              <div className="diagnosticCopy">
+                <h3>{title}</h3>
+                {body ? <p>{body}</p> : null}
+              </div>
+            </article>
+          );
+        })}
       </div>
     </section>
   );
