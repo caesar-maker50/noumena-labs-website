@@ -316,7 +316,6 @@ h3 {
 .quotePanel,
 .programmeCard,
 .offering,
-.problemItem,
 .person,
 .contactPanel {
   border: 1px solid rgba(227, 221, 211, 0.92);
@@ -552,7 +551,6 @@ h3 {
 
 .quotePanel svg,
 .softIcon,
-.signalIcon,
 .visualCaption svg {
   color: var(--accent);
 }
@@ -575,36 +573,90 @@ h3 {
   background: rgba(255, 253, 248, 0.46);
 }
 
-.problemGrid,
+.problem {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.42fr) minmax(0, 0.68fr);
+  gap: clamp(48px, 7vw, 108px);
+  align-items: start;
+}
+
+.problemIntro {
+  position: sticky;
+  top: 118px;
+  align-self: start;
+}
+
+.problemIntro h2 {
+  margin-top: 18px;
+  max-width: 530px;
+}
+
+.diagnosticSignals {
+  display: grid;
+}
+
+.diagnosticSignal {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr);
+  gap: clamp(22px, 3vw, 38px);
+  padding: clamp(30px, 4.8vw, 54px) 0;
+  border-top: 1px solid rgba(152, 132, 116, 0.2);
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 640ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 640ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--signal-delay);
+}
+
+.diagnosticSignal:last-child {
+  border-bottom: 1px solid rgba(152, 132, 116, 0.2);
+}
+
+.problemActive .diagnosticSignal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.diagnosticSignal:hover .diagnosticNumber,
+.diagnosticSignal:hover h3 {
+  color: var(--accent-deep);
+}
+
+.diagnosticNumber {
+  color: rgba(65, 43, 30, 0.2);
+  font-family: var(--heading);
+  font-size: clamp(2.4rem, 4.2vw, 4.75rem);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  transition: color 180ms ease;
+}
+
+.diagnosticCopy {
+  max-width: 740px;
+}
+
+.diagnosticCopy h3 {
+  color: #382c25;
+  font-family: var(--body);
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 600;
+  line-height: 1.16;
+  letter-spacing: 0;
+  transition: color 180ms ease;
+}
+
+.diagnosticCopy p {
+  margin-top: 8px;
+  color: rgba(83, 62, 48, 0.68);
+  font-size: clamp(1.12rem, 1.55vw, 1.25rem);
+  line-height: 1.45;
+}
+
 .teamGrid {
   display: grid;
   gap: 18px;
-}
-
-.problemGrid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.problemItem {
-  display: grid;
-  grid-template-columns: 38px 1fr;
-  gap: 14px;
-  align-items: start;
-  padding: 22px;
-  border-radius: 20px;
-}
-
-.signalIcon {
-  display: grid;
-  place-items: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 999px;
-  background: #f7eadc;
-}
-
-.problemItem p {
-  color: #43372f;
 }
 
 .sectionCloudGradient {
@@ -1492,6 +1544,15 @@ h3 {
     grid-template-columns: 1fr;
   }
 
+  .problem {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .problemIntro {
+    position: static;
+  }
+
   .heroInner {
     min-height: auto;
   }
@@ -1626,11 +1687,29 @@ h3 {
     border-radius: 26px;
   }
 
-  .problemGrid,
   .offeringGrid,
   .programGrid,
   .teamGrid {
     grid-template-columns: 1fr;
+  }
+
+  .diagnosticSignal {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 28px 0;
+  }
+
+  .diagnosticNumber {
+    font-size: clamp(2.2rem, 14vw, 3.2rem);
+  }
+
+  .diagnosticCopy h3 {
+    font-size: clamp(1.55rem, 7vw, 1.95rem);
+    line-height: 1.2;
+  }
+
+  .diagnosticCopy p {
+    font-size: clamp(1.02rem, 4.8vw, 1.12rem);
   }
 
   .processIntro {
@@ -1791,6 +1870,7 @@ h3 {
   .processIcon,
   .processNode,
   .processText,
+  .diagnosticSignal,
   .revealSection,
   .logoTrack,
   .sectionCloudGradient::before,
@@ -1806,6 +1886,7 @@ h3 {
 
   .processTimeline,
   .revealSection,
+  .diagnosticSignal,
   .processNode,
   .processText {
     opacity: 1;

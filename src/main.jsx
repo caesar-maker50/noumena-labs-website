@@ -6,7 +6,6 @@ import {
   Check,
   ChevronDown,
   ChevronUp,
-  CircleDot,
   Compass,
   ClipboardCheck,
   Handshake,
@@ -25,13 +24,30 @@ const BOOK_CALL_URL = "https://cal.com/";
 const SHIP_IT_URL = "https://enspiral.github.io/forge/";
 
 const problems = [
-  "You're moving fast. The cracks are starting to show.",
-  "Your organisation looks capable on the surface and feels hollow underneath.",
-  "The conversations that matter aren't happening. Everyone's talking to their AI instead of each other.",
-  "No one can tell anymore which insights are theirs and which are the model's.",
-  "Your leaders are better at generating options than choosing between them.",
-  "You're accumulating tool dependencies faster than you can evaluate their long-term risk.",
-  "Your best people are questioning whether this is the right place to do meaningful work."
+  {
+    title: "You're moving fast.",
+    body: "The cracks are starting to show."
+  },
+  {
+    title: "Your organisation looks capable on the surface.",
+    body: "It feels hollow underneath."
+  },
+  {
+    title: "The conversations that matter aren't happening.",
+    body: "Everyone's talking to AI instead of each other."
+  },
+  {
+    title: "No one can tell anymore which insights are theirs and which belong to the model."
+  },
+  {
+    title: "Your leaders are better at generating options than choosing between them."
+  },
+  {
+    title: "You're accumulating tool dependencies faster than you can evaluate their long-term risk."
+  },
+  {
+    title: "Your best people are questioning whether this is still the right place to do meaningful work."
+  }
 ];
 
 const offerings = [
@@ -329,17 +345,22 @@ function Thesis() {
 }
 
 function Problem() {
+  const [problemRef, isActive] = useRevealOnce(0.18);
+
   return (
-    <section id="problem" className="section problem">
-      <div className="sectionIntro">
+    <section id="problem" ref={problemRef} className={isActive ? "section problem problemActive" : "section problem"}>
+      <div className="problemIntro">
         <Pill>The problem</Pill>
         <h2>AI is a pressure test on how your organisation thinks, decides, and holds together.</h2>
       </div>
-      <div className="problemGrid">
-        {problems.map((item) => (
-          <article className="problemItem" key={item}>
-            <span className="signalIcon"><CircleDot size={17} /></span>
-            <p>{item}</p>
+      <div className="diagnosticSignals">
+        {problems.map(({ title, body }, index) => (
+          <article className="diagnosticSignal" key={title} style={{ "--signal-delay": `${index * 90}ms` }}>
+            <span className="diagnosticNumber">{String(index + 1).padStart(2, "0")}</span>
+            <div className="diagnosticCopy">
+              <h3>{title}</h3>
+              {body ? <p>{body}</p> : null}
+            </div>
           </article>
         ))}
       </div>
