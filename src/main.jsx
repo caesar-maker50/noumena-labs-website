@@ -13,8 +13,7 @@ import {
   MessageCircle,
   Network,
   Search,
-  ShieldCheck,
-  Sparkles
+  ShieldCheck
 } from "lucide-react";
 import "./styles.css";
 
@@ -171,23 +170,6 @@ const audiences = [
   }
 ];
 
-const impactLogos = [
-  { name: "Consensys", src: "/logos/consensys.svg" },
-  { name: "Komma", src: "/logos/logo.svg" },
-  { name: "Centrifuge", src: "/logos/centrifuge.svg" },
-  { name: "Rewiring", src: "/logos/rewiring-white.svg" },
-  { name: "Rewiring Aotearoa", src: "/logos/rewiring-aotearoa.svg" },
-  { name: "bp", src: "/logos/bp-logo.jpeg" },
-  { name: "Generous Ventures", src: "/logos/generous-ventures.webp" },
-  { name: "Verse", src: "/logos/verse.webp" },
-  { name: "MadeCurious", src: "/logos/made-curious.jpg" },
-  { name: "Fundsorter", src: "/logos/fundsorter.webp" },
-  { name: "Inspiring Stories", src: "/logos/inspiring-stories.jpeg" },
-  { name: "DAOstack", src: "/logos/daostack.png" },
-  { name: "Greaterthan", src: "/logos/greaterthanworks.jpeg" },
-  { name: "Enspiral", src: "/logos/enspiral.webp" }
-];
-
 function Pill({ children }) {
   return <span className="pill">{children}</span>;
 }
@@ -299,8 +281,8 @@ function Hero() {
         <div className="heroCopy">
           <Pill>Human × AI collaboration</Pill>
           <h1>
-            <span>AI is infiltrating your organisation.</span>
-            <span>Are you keeping up?</span>
+            <span className="heroPrimary">AI is infiltrating your organisation.</span>
+            <span className="heroSecondary">Are you keeping up?</span>
           </h1>
           <p className="heroText">
             Information is abundant. Speed is a foregone conclusion. What is left is <em>discernment</em>: to know what matters, to sense what is true, to decide with instinct and integrity under conditions of radical uncertainty.
@@ -310,7 +292,9 @@ function Hero() {
             <a className="button secondary" href="#offerings" onClick={scrollToOfferings}>See Offerings</a>
           </div>
         </div>
-        <div className="heroVisualCard">
+      </div>
+      <div className="heroBandWrap">
+        <div className="heroVisualCard heroBand">
           <img
             className="heroImage"
             src="/hero/collaboration-silhouette.png"
@@ -329,13 +313,16 @@ function Thesis() {
     <section id="thesis" ref={thesisRef} className={isRevealed ? "section thesis revealSection isRevealed" : "section thesis revealSection"}>
       <div className="sectionCenter">
         <Pill>Thesis</Pill>
-        <h2>Coherence holds as intelligence accelerates.</h2>
+        <h2><span>Coherence holds</span> as <span>intelligence accelerates.</span></h2>
         <p>
           Noumena Labs helps organisations redesign work, decision-making, leadership and judgment for the AI era so that coherence holds as intelligence accelerates.
         </p>
       </div>
       <div id="litepaper" className="quotePanel">
-        <Sparkles size={30} />
+        <div className="thesisMarker">
+          <span className="thesisIndex">01 · Thesis</span>
+          <span className="thesisRule" aria-hidden="true" />
+        </div>
         <p>In a landscape being rapidly flattened by AI, humanness is the moat and coherence is the bridge.</p>
       </div>
     </section>
@@ -374,7 +361,7 @@ function Problem() {
     <section id="problem" ref={problemRef} className={isActive ? "section problem problemActive revealSection isRevealed" : "section problem revealSection"}>
       <div className="problemIntro">
         <Pill>The problem</Pill>
-        <h2>AI is a pressure test on how your organisation thinks, decides, and holds together.</h2>
+        <h2>AI is a <span>pressure test</span> on how your organisation <span>thinks</span>, <span>decides</span>, and <span>holds together</span>.</h2>
       </div>
       <div className="diagnosticSignals">
         {problems.map(({ title, body }, index) => {
@@ -448,20 +435,6 @@ function Offerings() {
           </div>
         </article>
       </div>
-      <section className="impactStrip" aria-labelledby="impact-title">
-        <div className="impactHeader">
-          <h3 id="impact-title">Where we made an impact</h3>
-        </div>
-        <div className="logoMarquee" aria-label="Logo carousel placeholder">
-          <div className="logoTrack">
-            {[...impactLogos, ...impactLogos].map((logo, index) => (
-              <div className="logoTile" key={`${logo.name}-${index}`}>
-                <img src={logo.src} alt={`${logo.name} logo`} loading="lazy" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
     </section>
   );
 }

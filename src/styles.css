@@ -3077,6 +3077,494 @@ body::before {
   transform: translateY(0) rotateX(0) rotateZ(0) scale(1);
 }
 
+/* Clarion-directed refinement pass */
+:root {
+  --heading: "Geist", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --body: "Geist", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+h1,
+h2,
+h3,
+.quotePanel p,
+.diagnosticNumber {
+  font-family: var(--body);
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 430;
+  letter-spacing: -0.03em;
+}
+
+.heroCopy h1 {
+  max-width: 980px;
+  font-weight: 420;
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+
+.sectionIntro h2,
+.sectionCenter h2,
+.processIntro h2,
+.audienceHeader h2,
+.contactPanel h2,
+.problemIntro h2 {
+  font-weight: 410;
+  line-height: 1.02;
+}
+
+.offering h3,
+.programmeCard h3,
+.processText h3,
+.person h3,
+.offeringsCta h3,
+.diagnosticCopy h3 {
+  font-weight: 470;
+  letter-spacing: -0.022em;
+}
+
+.navCta,
+.button,
+.tags span,
+.category,
+.pill {
+  font-weight: 500;
+}
+
+body {
+  background:
+    radial-gradient(circle at 18% 6%, rgba(217, 70, 239, 0.012), transparent 18%),
+    radial-gradient(circle at 86% 12%, rgba(55, 199, 243, 0.009), transparent 22%),
+    linear-gradient(180deg, #070912 0%, #05070d 46%, #04060b 100%),
+    var(--paper);
+}
+
+body::before,
+#root::before {
+  opacity: 0.08;
+}
+
+.siteHeader {
+  padding-top: 18px;
+}
+
+.navWrap {
+  min-height: 62px;
+  padding: 9px 10px 9px 14px;
+  background: rgba(7, 9, 18, 0.74);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(14px);
+}
+
+.navWrap nav {
+  font-size: 0.88rem;
+  color: rgba(184, 180, 196, 0.84);
+}
+
+.brand {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.17em;
+  color: rgba(245, 243, 247, 0.92);
+}
+
+.navCta,
+.button {
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 9px;
+  font-size: 0.92rem;
+  letter-spacing: -0.01em;
+}
+
+.navCta {
+  background: rgba(217, 70, 239, 0.16);
+  border: 1px solid rgba(217, 70, 239, 0.3);
+  color: rgba(245, 243, 247, 0.94);
+  box-shadow: none;
+}
+
+.navCta:hover,
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button.primary,
+.contactActions .button.primary {
+  background: #c73de0;
+  border-color: rgba(217, 70, 239, 0.36);
+  color: #f8f5fb;
+  box-shadow: 0 10px 26px rgba(217, 70, 239, 0.12);
+}
+
+.button.primary:hover,
+.contactActions .button.primary:hover,
+.navCta:hover {
+  background: #d946ef;
+  box-shadow: 0 14px 28px rgba(217, 70, 239, 0.16);
+}
+
+.button.secondary,
+.button.tertiary,
+.contactActions .button.tertiary {
+  background: rgba(255, 255, 255, 0.025);
+  border-color: rgba(255, 255, 255, 0.14);
+  color: rgba(245, 243, 247, 0.84);
+  box-shadow: none;
+}
+
+.button.secondary:hover,
+.button.tertiary:hover,
+.contactActions .button.tertiary:hover {
+  background: rgba(255, 255, 255, 0.045);
+  border-color: rgba(255, 255, 255, 0.22);
+  color: rgba(245, 243, 247, 0.96);
+  box-shadow: none;
+}
+
+.pill {
+  min-height: 30px;
+  padding: 0 11px;
+  border-radius: 8px;
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(184, 180, 196, 0.82);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  box-shadow: none;
+}
+
+.hero {
+  padding-bottom: 18px;
+}
+
+.hero::before {
+  top: -220px;
+  right: -80px;
+  width: min(680px, 70%);
+  height: 640px;
+  background: radial-gradient(circle, rgba(217, 70, 239, 0.08), transparent 64%);
+  filter: blur(14px);
+}
+
+.hero::after {
+  left: -12%;
+  bottom: -14%;
+  width: 54%;
+  height: 42%;
+  background: radial-gradient(circle, rgba(107, 46, 255, 0.08), transparent 70%);
+}
+
+.heroInner {
+  min-height: auto;
+  display: block;
+  padding: var(--hero-pad-top) 0 34px;
+}
+
+.heroCopy {
+  max-width: 1040px;
+}
+
+.heroPrimary {
+  color: #f5f3f7;
+}
+
+.heroSecondary {
+  color: rgba(184, 180, 196, 0.78);
+}
+
+.heroText {
+  max-width: 760px;
+  margin-top: 22px;
+  font-size: 1.05rem;
+  line-height: 1.62;
+  color: rgba(184, 180, 196, 0.88);
+}
+
+.heroBandWrap,
+.section,
+.footer {
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.heroBandWrap {
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.heroBandWrap::before {
+  content: "";
+  position: absolute;
+  inset: 4% -5% -8%;
+  background:
+    radial-gradient(ellipse at 22% 42%, rgba(217, 70, 239, 0.08), transparent 30%),
+    radial-gradient(ellipse at 72% 54%, rgba(255, 122, 26, 0.05), transparent 26%),
+    radial-gradient(ellipse at 50% 58%, rgba(55, 199, 243, 0.035), transparent 22%);
+  filter: blur(46px);
+  pointer-events: none;
+}
+
+.heroVisualCard.heroBand {
+  min-height: 0;
+  animation: none;
+  filter:
+    drop-shadow(0 24px 60px rgba(0, 0, 0, 0.48))
+    drop-shadow(0 0 32px rgba(217, 70, 239, 0.04));
+}
+
+.heroVisualCard.heroBand::before {
+  inset: -10% -4%;
+}
+
+.heroVisualCard.heroBand::after {
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, rgba(5, 6, 10, 0.08), rgba(5, 6, 10, 0.26)),
+    radial-gradient(ellipse at center, transparent 52%, rgba(5, 6, 10, 0.46) 100%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.08'/%3E%3C/svg%3E");
+  background-size: auto, auto, 180px 180px;
+}
+
+.heroVisualCard.heroBand .heroImage {
+  min-height: clamp(220px, 28vw, 340px);
+  max-height: 340px;
+  border-radius: 22px;
+  object-fit: cover;
+  object-position: center 44%;
+}
+
+.thesis {
+  padding-top: 18px;
+}
+
+.sectionCenter h2 span:first-child,
+.problemIntro h2 span:first-child {
+  color: #f5f3f7;
+}
+
+.sectionCenter h2 span:last-child,
+.problemIntro h2 span {
+  color: rgba(184, 180, 196, 0.84);
+}
+
+.quotePanel,
+.offeringsCta,
+.contactPanel,
+.offering,
+.programmeCard,
+.person,
+.audienceVisualCard {
+  border-radius: 18px;
+}
+
+.quotePanel {
+  gap: 18px;
+  padding: clamp(24px, 3vw, 34px);
+  text-align: left;
+  justify-items: start;
+  background:
+    linear-gradient(180deg, rgba(13, 16, 26, 0.95), rgba(9, 11, 18, 0.96)),
+    rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 20px 56px rgba(0, 0, 0, 0.24);
+}
+
+.thesisMarker {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+}
+
+.thesisIndex {
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: rgba(184, 180, 196, 0.72);
+}
+
+.thesisRule {
+  display: block;
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.02));
+}
+
+.quotePanel p {
+  max-width: 880px;
+  color: rgba(245, 243, 247, 0.92);
+  font-weight: 420;
+  font-size: clamp(1.75rem, 2.8vw, 2.35rem);
+  line-height: 1.08;
+}
+
+.problem,
+.approach {
+  background:
+    radial-gradient(circle at 86% 12%, rgba(107, 46, 255, 0.05), transparent 34%),
+    rgba(5, 7, 13, 0.18);
+}
+
+.problemIntro h2 span:first-child,
+.problemIntro h2 span:last-child {
+  color: rgba(245, 243, 247, 0.88);
+}
+
+.diagnosticSignal.active .diagnosticNumber,
+.diagnosticSignal.active h3,
+.diagnosticSignal:hover .diagnosticNumber,
+.diagnosticSignal:hover h3 {
+  color: rgba(217, 70, 239, 0.86);
+}
+
+.diagnosticNumber {
+  font-size: clamp(1.45rem, 2vw, 2.1rem);
+  font-weight: 420;
+  color: rgba(255, 255, 255, 0.16);
+}
+
+.diagnosticCopy h3 {
+  font-size: clamp(1.5rem, 1.9vw, 1.8rem);
+}
+
+.diagnosticCopy p {
+  color: rgba(184, 180, 196, 0.82);
+}
+
+.sectionCloudGradient,
+.section--organic-glow {
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 18% 35%, rgba(217, 70, 239, 0.085), transparent 28%),
+    radial-gradient(circle at 72% 26%, rgba(107, 46, 255, 0.07), transparent 30%),
+    radial-gradient(circle at 54% 82%, rgba(255, 122, 26, 0.045), transparent 24%),
+    radial-gradient(circle at 88% 76%, rgba(116, 138, 150, 0.05), transparent 24%),
+    #090c15;
+  box-shadow: 0 26px 80px rgba(0, 0, 0, 0.24);
+}
+
+.sectionCloudGradient::before,
+.section--organic-glow::before {
+  opacity: 0.14;
+}
+
+.sectionCloudGradient::after,
+.section--organic-glow::after {
+  opacity: 0.07;
+}
+
+.offering,
+.offering:nth-child(even),
+.offering:nth-child(3),
+.programmeCard,
+.programmeCard.course,
+.person,
+.contactPanel {
+  background:
+    linear-gradient(150deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02)),
+    linear-gradient(180deg, rgba(16, 19, 31, 0.96), rgba(9, 12, 21, 0.98));
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 18px 42px rgba(0, 0, 0, 0.22);
+}
+
+.offering {
+  min-height: 312px;
+}
+
+.offering:hover,
+.programmeCard:hover,
+.person:hover {
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 22px 56px rgba(0, 0, 0, 0.28);
+}
+
+.category {
+  color: rgba(184, 180, 196, 0.74);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+}
+
+.softIcon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(217, 70, 239, 0.78);
+}
+
+.offering p,
+.programmeCard p,
+.person p,
+.contactPanel p,
+.audienceBody p,
+.audienceHeader p {
+  color: rgba(184, 180, 196, 0.88);
+}
+
+.tags span {
+  border-radius: 9px;
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.035);
+  color: rgba(245, 243, 247, 0.74);
+  font-weight: 500;
+}
+
+.offeringsCta {
+  max-width: 560px;
+  margin-top: 26px;
+  background:
+    linear-gradient(180deg, rgba(13, 16, 26, 0.96), rgba(9, 11, 18, 0.98));
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: none;
+}
+
+.offeringsCta h3 {
+  font-size: clamp(1.35rem, 1.8vw, 1.7rem);
+}
+
+.offeringsCta p {
+  color: rgba(184, 180, 196, 0.8);
+}
+
+.audienceVisualCard {
+  background:
+    radial-gradient(circle at 20% 24%, rgba(55, 199, 243, 0.035), transparent 18%),
+    radial-gradient(circle at 34% 34%, rgba(217, 70, 239, 0.05), transparent 24%),
+    radial-gradient(circle at 72% 66%, rgba(255, 122, 26, 0.028), transparent 18%),
+    radial-gradient(circle at 82% 72%, rgba(107, 46, 255, 0.035), transparent 28%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015)),
+    #090c15;
+}
+
+.audienceVisualCard::before {
+  opacity: 0.22;
+}
+
+.contactActions {
+  gap: 10px;
+}
+
+.contactActions .button.primary {
+  background: #c73de0;
+}
+
+.contactActions .button.secondary {
+  background: rgba(255, 255, 255, 0.03);
+}
+
 @media (max-width: 760px) {
   #root::after {
     height: 20px;
@@ -3151,6 +3639,19 @@ body::before {
 
   .heroImage {
     min-height: 390px;
+  }
+
+  .heroBandWrap {
+    width: min(1180px, calc(100% - 40px));
+  }
+
+  .heroVisualCard.heroBand {
+    min-height: 0;
+  }
+
+  .heroVisualCard.heroBand .heroImage {
+    min-height: 240px;
+    max-height: 300px;
   }
 
   .teamGrid {
@@ -3253,6 +3754,25 @@ body::before {
   .heroImage {
     min-height: 300px;
     border-radius: 20px;
+  }
+
+  .heroCopy h1 {
+    line-height: 1.02;
+  }
+
+  .heroBandWrap {
+    width: min(100% - 32px, 1240px);
+    padding-bottom: 0;
+  }
+
+  .heroVisualCard.heroBand {
+    min-height: 0;
+  }
+
+  .heroVisualCard.heroBand .heroImage {
+    min-height: 200px;
+    max-height: 240px;
+    object-position: center 42%;
   }
 
   .abstractVisual {
