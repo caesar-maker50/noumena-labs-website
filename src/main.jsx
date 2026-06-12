@@ -513,7 +513,7 @@ function Approach() {
           <span />
         </div>
         {steps.map(({ title, body, icon: Icon }, index) => (
-          <article className="processStep" key={title} style={{ "--step-delay": `${260 + index * 280}ms` }}>
+          <article className="processStep" key={title} style={{ "--step-delay": `${420 + index * 420}ms` }}>
             <div className="processNode">
               <span className="processIcon">
                 <span className="stepNumber">{String(index + 1).padStart(2, "0")}</span>

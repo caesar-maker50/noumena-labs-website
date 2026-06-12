@@ -47,8 +47,8 @@ body {
   isolation: isolate;
   overflow-x: hidden;
   background:
-    radial-gradient(circle at 16% 4%, rgba(217, 70, 239, 0.1), transparent 24%),
-    radial-gradient(circle at 84% 10%, rgba(107, 46, 255, 0.09), transparent 28%),
+    radial-gradient(circle at 16% 4%, rgba(217, 70, 239, 0.055), transparent 22%),
+    radial-gradient(circle at 84% 10%, rgba(107, 46, 255, 0.055), transparent 26%),
     linear-gradient(180deg, #0b0d18 0%, #090b18 48%, #070914 100%),
     var(--paper);
 }
@@ -68,14 +68,79 @@ body::before {
     radial-gradient(circle at 74% 34%, rgba(107, 46, 255, 0.13), transparent 28%),
     radial-gradient(circle at 46% 72%, rgba(255, 138, 76, 0.08), transparent 24%);
   filter: blur(72px);
-  opacity: 0.44;
+  opacity: 0.28;
   animation: ambientDrift 28s ease-in-out infinite alternate;
   will-change: transform, opacity;
 }
 
 #root {
+  position: relative;
   min-height: 0;
-  overflow: clip;
+  overflow-x: clip;
+}
+
+#root::before,
+#root::after {
+  content: "";
+  position: fixed;
+  pointer-events: none;
+}
+
+#root::before {
+  z-index: -1;
+  width: min(72vw, 860px);
+  height: min(72vw, 860px);
+  right: -18vw;
+  top: 16vh;
+  border-radius: 42% 58% 54% 46% / 48% 42% 58% 52%;
+  background:
+    radial-gradient(circle at 36% 32%, rgba(55, 199, 243, 0.12), transparent 15%),
+    radial-gradient(circle at 48% 44%, rgba(217, 70, 239, 0.2), transparent 25%),
+    radial-gradient(circle at 66% 58%, rgba(107, 46, 255, 0.16), transparent 28%),
+    radial-gradient(circle at 34% 70%, rgba(255, 122, 26, 0.1), transparent 22%),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05), transparent 54%);
+  box-shadow:
+    inset 0 0 80px rgba(255, 255, 255, 0.035),
+    0 0 120px rgba(217, 70, 239, 0.1),
+    0 0 180px rgba(107, 46, 255, 0.08);
+  filter: blur(10px) saturate(1.08);
+  opacity: 0.26;
+  mix-blend-mode: screen;
+  animation: organicMembrane 34s cubic-bezier(0.22, 1, 0.36, 1) infinite alternate;
+  will-change: transform, border-radius, opacity;
+}
+
+#root::after {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  height: 78px;
+  background:
+    linear-gradient(180deg, transparent, rgba(8, 10, 19, 0.62) 72%, rgba(8, 10, 19, 0.82)),
+    radial-gradient(ellipse at 50% 100%, rgba(217, 70, 239, 0.05), transparent 66%);
+  backdrop-filter: blur(8px);
+  opacity: 0.62;
+}
+
+@keyframes organicMembrane {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.98) rotate(-4deg);
+    border-radius: 42% 58% 54% 46% / 48% 42% 58% 52%;
+    opacity: 0.28;
+  }
+
+  45% {
+    transform: translate3d(-7vw, 18vh, 0) scale(1.06) rotate(5deg);
+    border-radius: 58% 42% 46% 54% / 42% 58% 44% 56%;
+    opacity: 0.38;
+  }
+
+  100% {
+    transform: translate3d(-3vw, 48vh, 0) scale(1.02) rotate(-2deg);
+    border-radius: 48% 52% 60% 40% / 56% 44% 52% 48%;
+    opacity: 0.32;
+  }
 }
 
 body::after {
@@ -2184,7 +2249,7 @@ h3 {
 
 /* Targeted polish pass */
 .hero::before {
-  background: radial-gradient(circle, rgba(217, 70, 239, 0.14), transparent 64%);
+  background: radial-gradient(circle, rgba(217, 70, 239, 0.085), transparent 66%);
 }
 
 .hero::after {
@@ -2369,6 +2434,193 @@ h3 {
 
 .footerBottom {
   margin-bottom: 0;
+}
+
+/* Motion and dimensional polish */
+.offeringGrid,
+.programGrid,
+.teamGrid,
+.contactPanel,
+.impactStrip,
+.offeringsCta {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.revealSection .offering,
+.revealSection .programmeCard,
+.revealSection .person,
+.revealSection .contactPanel,
+.revealSection .offeringsCta,
+.revealSection .impactStrip {
+  opacity: 0.74;
+  transform: translateY(24px) rotateX(2deg) scale(0.985);
+  transform-origin: center top;
+  transition:
+    opacity 920ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 920ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.revealSection.isRevealed .offering,
+.revealSection.isRevealed .programmeCard,
+.revealSection.isRevealed .person,
+.revealSection.isRevealed .contactPanel,
+.revealSection.isRevealed .offeringsCta,
+.revealSection.isRevealed .impactStrip {
+  opacity: 1;
+  transform: translateY(0) rotateX(0) scale(1);
+}
+
+.revealSection.isRevealed .offering:nth-child(2),
+.revealSection.isRevealed .person:nth-child(2),
+.revealSection.isRevealed .programmeCard:nth-child(2) {
+  transition-delay: 90ms;
+}
+
+.revealSection.isRevealed .offering:nth-child(3),
+.revealSection.isRevealed .person:nth-child(3) {
+  transition-delay: 160ms;
+}
+
+.revealSection.isRevealed .offering:nth-child(4),
+.revealSection.isRevealed .person:nth-child(4) {
+  transition-delay: 230ms;
+}
+
+.revealSection.isRevealed .person:nth-child(5) {
+  transition-delay: 300ms;
+}
+
+.revealSection.isRevealed .person:nth-child(6) {
+  transition-delay: 370ms;
+}
+
+.offering,
+.programmeCard,
+.person,
+.contactPanel {
+  background:
+    radial-gradient(circle at 84% 16%, rgba(217, 70, 239, 0.075), transparent 30%),
+    radial-gradient(circle at 18% 88%, rgba(55, 199, 243, 0.035), transparent 34%),
+    linear-gradient(150deg, rgba(255, 255, 255, 0.085), rgba(255, 255, 255, 0.035)),
+    rgba(18, 21, 35, 0.88);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.sectionCloudGradient {
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.045);
+}
+
+.processTimeline {
+  transition-duration: 940ms;
+  perspective: 1000px;
+}
+
+.processLine {
+  z-index: 0;
+  top: 59px;
+  background: rgba(58, 55, 82, 0.46);
+}
+
+.processLine span {
+  transition-duration: 2100ms;
+  background: linear-gradient(90deg, rgba(217, 70, 239, 0.72), rgba(107, 46, 255, 0.74));
+}
+
+.processStep {
+  z-index: 1;
+}
+
+.processNode {
+  z-index: 2;
+}
+
+.processIcon {
+  position: relative;
+  z-index: 3;
+  background:
+    radial-gradient(circle at 32% 22%, rgba(255, 255, 255, 0.18), transparent 38%),
+    linear-gradient(145deg, rgba(23, 26, 42, 0.96), rgba(18, 21, 35, 0.96));
+}
+
+.approachActive .processIcon {
+  animation-duration: 620ms;
+}
+
+.processNode,
+.processText {
+  transition-duration: 460ms;
+}
+
+.audienceVisualCard {
+  background:
+    radial-gradient(circle at 18% 22%, rgba(55, 199, 243, 0.08), transparent 24%),
+    radial-gradient(circle at 28% 26%, rgba(217, 70, 239, 0.13), transparent 30%),
+    radial-gradient(circle at 82% 72%, rgba(107, 46, 255, 0.12), transparent 36%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.026)),
+    #121523;
+}
+
+.audienceVisualCard::before {
+  opacity: 0.58;
+  background:
+    radial-gradient(circle at 24% 42%, rgba(217, 70, 239, 0.18), transparent 25%),
+    radial-gradient(circle at 68% 50%, rgba(107, 46, 255, 0.16), transparent 28%),
+    radial-gradient(circle at 48% 74%, rgba(255, 122, 26, 0.09), transparent 24%),
+    radial-gradient(circle at 34% 28%, rgba(55, 199, 243, 0.08), transparent 20%);
+  animation-duration: 30s;
+}
+
+.aiFieldNetwork path {
+  stroke: rgba(198, 194, 214, 0.19);
+}
+
+.aiFieldNetwork circle {
+  fill: rgba(245, 243, 247, 0.78);
+  stroke: rgba(217, 70, 239, 0.62);
+}
+
+.contactActions .button.primary,
+.button.primary {
+  transition:
+    transform 200ms ease,
+    box-shadow 240ms ease,
+    background 240ms ease,
+    border-color 200ms ease;
+}
+
+.contactActions .button.secondary,
+.contactActions .button.tertiary,
+.button.secondary,
+.button.tertiary {
+  color: rgba(245, 243, 247, 0.88);
+}
+
+@media (max-width: 760px) {
+  #root::after {
+    height: 44px;
+    backdrop-filter: blur(4px);
+    opacity: 0.34;
+  }
+
+  #root::before {
+    width: 560px;
+    height: 560px;
+    right: -260px;
+    top: 18vh;
+    opacity: 0.16;
+  }
+
+  .processLine {
+    z-index: 0;
+  }
+
+  .processStep {
+    position: relative;
+    z-index: 1;
+  }
 }
 
 @media (max-width: 1080px) {
@@ -2759,6 +3011,7 @@ h3 {
   .revealSection,
   .logoTrack,
   body::before,
+  #root::before,
   .heroVisualCard,
   .audienceVisualCard::before,
   .audienceVisualCard::after,
@@ -2779,7 +3032,13 @@ h3 {
   .revealSection,
   .diagnosticSignal,
   .processNode,
-  .processText {
+  .processText,
+  .revealSection .offering,
+  .revealSection .programmeCard,
+  .revealSection .person,
+  .revealSection .contactPanel,
+  .revealSection .offeringsCta,
+  .revealSection .impactStrip {
     opacity: 1;
     transform: none;
   }
