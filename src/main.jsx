@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import {
   ArrowRight,
-  Bot,
   Check,
   ChevronDown,
   ChevronUp,
@@ -327,8 +326,10 @@ function Hero() {
 }
 
 function Thesis() {
+  const [thesisRef, isRevealed] = useRevealOnce();
+
   return (
-    <section id="thesis" className="section thesis">
+    <section id="thesis" ref={thesisRef} className={isRevealed ? "section thesis revealSection isRevealed" : "section thesis revealSection"}>
       <div className="sectionCenter">
         <Pill>Thesis</Pill>
         <h2>Coherence holds as intelligence accelerates.</h2>
@@ -373,7 +374,7 @@ function Problem() {
   }, [problemRef]);
 
   return (
-    <section id="problem" ref={problemRef} className={isActive ? "section problem problemActive" : "section problem"}>
+    <section id="problem" ref={problemRef} className={isActive ? "section problem problemActive revealSection isRevealed" : "section problem revealSection"}>
       <div className="problemIntro">
         <Pill>The problem</Pill>
         <h2>AI is a pressure test on how your organisation thinks, decides, and holds together.</h2>
@@ -403,8 +404,10 @@ function Problem() {
 }
 
 function Offerings() {
+  const [offeringsRef, isRevealed] = useRevealOnce();
+
   return (
-    <section id="offerings" className="section offerings sectionCloudGradient section--organic-glow">
+    <section id="offerings" ref={offeringsRef} className={isRevealed ? "section offerings sectionCloudGradient section--organic-glow revealSection isRevealed" : "section offerings sectionCloudGradient section--organic-glow revealSection"}>
       <div className="sectionIntro wide">
         <Pill>Offerings</Pill>
         <h2>Four ways to work with us.</h2>
@@ -500,7 +503,7 @@ function Approach() {
   }, []);
 
   return (
-    <section id="approach" ref={sectionRef} className={isActive ? "section approach approachActive" : "section approach"}>
+    <section id="approach" ref={sectionRef} className={isActive ? "section approach approachActive revealSection isRevealed" : "section approach revealSection"}>
       <div className="sectionIntro processIntro">
         <Pill>How we work</Pill>
         <h2>What happens when you reach out.</h2>
@@ -564,9 +567,10 @@ function Team() {
 
 function Audience() {
   const [open, setOpen] = useState(0);
+  const [audienceRef, isRevealed] = useRevealOnce();
 
   return (
-    <section className="section audience">
+    <section ref={audienceRef} className={isRevealed ? "section audience revealSection isRevealed" : "section audience revealSection"}>
       <div className="audienceHeader">
         <Pill>Who this is for</Pill>
         <h2>For teams adopting AI under pressure.</h2>
@@ -575,13 +579,6 @@ function Audience() {
         </p>
       </div>
       <div className="audienceLayout">
-        <div className="audienceVisualCard">
-          <AbstractVisual compact />
-          <div className="visualCaption">
-            <Bot size={18} />
-            <span>Tooling, governance, culture and judgement held in one system.</span>
-          </div>
-        </div>
         <div className="accordion">
           {audiences.map(({ title, body }, index) => {
             const isOpen = open === index;
@@ -602,14 +599,37 @@ function Audience() {
             );
           })}
         </div>
+        <div className="audienceVisualCard" aria-label="Interactive abstract Human and AI network" role="img">
+          <div className="aiFieldOrb orbA" />
+          <div className="aiFieldOrb orbB" />
+          <div className="aiFieldOrb orbC" />
+          <div className="aiFieldRing ringA" />
+          <div className="aiFieldRing ringB" />
+          <svg className="aiFieldNetwork" viewBox="0 0 520 520" aria-hidden="true">
+            <path d="M78 322 C154 206 226 190 306 236 S430 276 462 148" />
+            <path d="M116 142 C188 216 208 324 318 336 S420 386 466 298" />
+            <path d="M92 404 C176 374 214 286 286 278 S374 210 436 232" />
+            <circle cx="78" cy="322" r="7" />
+            <circle cx="306" cy="236" r="8" />
+            <circle cx="462" cy="148" r="6" />
+            <circle cx="116" cy="142" r="7" />
+            <circle cx="318" cy="336" r="9" />
+            <circle cx="466" cy="298" r="7" />
+            <circle cx="92" cy="404" r="6" />
+            <circle cx="286" cy="278" r="8" />
+            <circle cx="436" cy="232" r="7" />
+          </svg>
+        </div>
       </div>
     </section>
   );
 }
 
 function Contact() {
+  const [contactRef, isRevealed] = useRevealOnce();
+
   return (
-    <section id="contact" className="section contactSection">
+    <section id="contact" ref={contactRef} className={isRevealed ? "section contactSection revealSection isRevealed" : "section contactSection revealSection"}>
       <div className="contactPanel">
         <div>
           <Pill>Get in touch</Pill>
