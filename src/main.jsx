@@ -269,9 +269,6 @@ function Nav() {
     <header className="siteHeader">
       <div className="navWrap">
         <a href="#top" className="brand" aria-label="Noumena Labs home">
-          <span className="brandMark" aria-hidden="true">
-            <span />
-          </span>
           <span>Noumena Labs</span>
         </a>
         <nav aria-label="Primary navigation">
@@ -661,7 +658,6 @@ function Footer() {
       <div className="footerMinimal">
         <div>
           <a href="#top" className="brand footerBrand" aria-label="Noumena Labs home">
-            <span className="brandMark" aria-hidden="true"><span /></span>
             <span>Noumena Labs</span>
           </a>
         </div>

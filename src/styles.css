@@ -268,9 +268,13 @@ h3 {
 
 .brand {
   align-items: center;
-  gap: 12px;
+  gap: 0;
   min-height: 44px;
+  font-family: var(--body);
+  font-size: 0.76rem;
   font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
   color: var(--ink);
   white-space: nowrap;
 }
@@ -475,6 +479,37 @@ h3 {
   box-shadow: none;
 }
 
+.heroVisualCard::before,
+.heroVisualCard::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.heroVisualCard::before {
+  inset: -18%;
+  z-index: -1;
+  border-radius: 34px;
+  background:
+    radial-gradient(ellipse at 48% 52%, rgba(0, 0, 0, 0.68), transparent 60%),
+    radial-gradient(ellipse at 50% 58%, rgba(255, 122, 26, 0.055), transparent 44%),
+    radial-gradient(ellipse at 78% 24%, rgba(217, 70, 239, 0.045), transparent 38%);
+  filter: blur(34px);
+  opacity: 0.9;
+}
+
+.heroVisualCard::after {
+  inset: 0;
+  z-index: 1;
+  border-radius: 28px;
+  background:
+    radial-gradient(ellipse at center, transparent 58%, rgba(5, 6, 10, 0.42) 100%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.08'/%3E%3C/svg%3E");
+  background-size: auto, 180px 180px;
+  opacity: 0.28;
+  mix-blend-mode: soft-light;
+}
+
 .heroImage {
   display: block;
   width: 100%;
@@ -489,8 +524,8 @@ h3 {
     linear-gradient(180deg, transparent 0%, black 8%, black 92%, transparent 100%);
   mask-composite: intersect;
   -webkit-mask-image:
-    linear-gradient(90deg, transparent 0%, black 7%, black 93%, transparent 100%),
-    linear-gradient(180deg, transparent 0%, black 8%, black 92%, transparent 100%);
+    linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%),
+    linear-gradient(180deg, transparent 0%, black 10%, black 90%, transparent 100%);
   -webkit-mask-composite: source-in;
 }
 
@@ -970,7 +1005,7 @@ h3 {
   position: relative;
   min-height: 318px;
   padding: clamp(24px, 3vw, 34px);
-  padding-bottom: 104px;
+  padding-bottom: clamp(24px, 3vw, 34px);
   overflow: hidden;
   background:
     radial-gradient(circle at 86% 18%, rgba(219, 230, 232, 0.64), transparent 34%),
@@ -1029,6 +1064,7 @@ h3 {
   margin-top: 14px;
   color: #67574c;
   line-height: 1.58;
+  transition: opacity 220ms ease, transform 220ms ease;
 }
 
 .tags {
@@ -1039,15 +1075,18 @@ h3 {
 }
 
 .offering .tags {
-  position: absolute;
-  left: clamp(26px, 3vw, 38px);
-  right: clamp(26px, 3vw, 38px);
-  bottom: clamp(24px, 3vw, 34px);
-  margin-top: 0;
+  margin-top: 22px;
   opacity: 0;
-  transform: translateY(10px);
+  transform: translateY(8px);
   pointer-events: none;
   transition: opacity 220ms ease, transform 220ms ease;
+}
+
+.offering:hover p,
+.offering:focus-within p,
+.offering:focus p {
+  opacity: 0;
+  transform: translateY(-6px);
 }
 
 .offering:hover .tags,
@@ -2108,11 +2147,12 @@ h3 {
   position: absolute;
   inset: 0;
   background:
+    conic-gradient(from 18deg at 52% 52%, transparent, rgba(217, 70, 239, 0.07), transparent 22%, rgba(55, 199, 243, 0.045), transparent 48%, rgba(255, 122, 26, 0.035), transparent 76%),
     radial-gradient(circle at 18% 26%, rgba(255, 255, 255, 0.12) 0 1px, transparent 2px),
     radial-gradient(circle at 72% 62%, rgba(255, 255, 255, 0.1) 0 1px, transparent 2px),
     radial-gradient(circle at 48% 78%, rgba(255, 255, 255, 0.08) 0 1px, transparent 2px);
-  background-size: 82px 82px, 116px 116px, 148px 148px;
-  opacity: 0.13;
+  background-size: auto, 82px 82px, 116px 116px, 148px 148px;
+  opacity: 0.16;
   mix-blend-mode: screen;
   animation: cellularDrift 38s linear infinite;
 }
@@ -2189,8 +2229,10 @@ h3 {
 
 .aiFieldNetwork path {
   fill: none;
-  stroke: rgba(244, 244, 245, 0.18);
+  stroke: rgba(198, 194, 214, 0.22);
   stroke-width: 1.4;
+  stroke-dasharray: 5 12;
+  animation: networkPulse 18s ease-in-out infinite alternate;
 }
 
 .aiFieldNetwork circle {
@@ -2206,7 +2248,19 @@ h3 {
 }
 
 .audienceVisualCard:hover .aiFieldNetwork path {
-  stroke: rgba(241, 165, 255, 0.28);
+  stroke: rgba(241, 165, 255, 0.38);
+}
+
+@keyframes networkPulse {
+  from {
+    stroke-dashoffset: 0;
+    opacity: 0.62;
+  }
+
+  to {
+    stroke-dashoffset: -28;
+    opacity: 0.92;
+  }
 }
 
 @keyframes aiFieldDrift {
@@ -3097,7 +3151,6 @@ h3 {
 
   .offering {
     min-height: auto;
-    padding-bottom: 24px;
   }
 
   .offering .tags {
@@ -3226,6 +3279,7 @@ h3 {
   .audienceVisualCard::after,
   .aiFieldOrb,
   .aiFieldRing,
+  .aiFieldNetwork path,
   .sectionCloudGradient::before,
   .section--organic-glow::before,
   .section--organic-glow::after {
