@@ -170,8 +170,8 @@ const audiences = [
   }
 ];
 
-function Pill({ children }) {
-  return <span className="pill">{children}</span>;
+function Pill({ index, children }) {
+  return <span className="pill">{index ? `${index} · ${children}` : children}</span>;
 }
 
 function LinkedInMark() {
@@ -312,7 +312,6 @@ function Thesis() {
   return (
     <section id="thesis" ref={thesisRef} className={isRevealed ? "section thesis revealSection isRevealed" : "section thesis revealSection"}>
       <div className="sectionCenter">
-        <Pill>Thesis</Pill>
         <h2><span>Coherence holds</span> as <span>intelligence accelerates.</span></h2>
         <p>
           Noumena Labs helps organisations redesign work, decision-making, leadership and judgment for the AI era so that coherence holds as intelligence accelerates.
@@ -320,7 +319,7 @@ function Thesis() {
       </div>
       <div id="litepaper" className="quotePanel">
         <div className="thesisMarker">
-          <span className="thesisIndex">01 · Thesis</span>
+          <span className="thesisIndex">01 · THESIS</span>
           <span className="thesisRule" aria-hidden="true" />
         </div>
         <p>In a landscape being rapidly flattened by AI, humanness is the moat and coherence is the bridge.</p>
@@ -360,7 +359,7 @@ function Problem() {
   return (
     <section id="problem" ref={problemRef} className={isActive ? "section problem problemActive revealSection isRevealed" : "section problem revealSection"}>
       <div className="problemIntro">
-        <Pill>The problem</Pill>
+        <Pill index="02">The problem</Pill>
         <h2>AI is a <span>pressure test</span> on how your organisation <span>thinks</span>, <span>decides</span>, and <span>holds together</span>.</h2>
       </div>
       <div className="diagnosticSignals">
@@ -393,7 +392,7 @@ function Offerings() {
   return (
     <section id="offerings" ref={offeringsRef} className={isRevealed ? "section offerings sectionCloudGradient section--organic-glow revealSection isRevealed" : "section offerings sectionCloudGradient section--organic-glow revealSection"}>
       <div className="sectionIntro wide">
-        <Pill>Offerings</Pill>
+        <Pill index="03">Offerings</Pill>
         <h2>Four ways to work with us.</h2>
         <p>Named, scoped engagements. We work on a defined problem with a defined outcome, not open-ended retainers.</p>
       </div>
@@ -412,11 +411,10 @@ function Offerings() {
           </article>
         ))}
       </div>
-      <div className="offeringsCta">
-        <h3>Not sure where to start?</h3>
-        <p>Book a short conversation and we'll help identify which engagement fits your situation.</p>
-        <a className="button primary" href={BOOK_CALL_URL}>Book a call</a>
-      </div>
+      <div className="programmeSection">
+        <div className="programmeIntro">
+          <Pill>Programmes</Pill>
+        </div>
       <div className="programGrid">
         <article className="programmeCard">
           <Pill>Programme</Pill>
@@ -434,6 +432,7 @@ function Offerings() {
             {["Email & calendar automation", "AI workflow design", "Tool connections", "Security & data sovereignty"].map((tag) => <span key={tag}>{tag}</span>)}
           </div>
         </article>
+      </div>
       </div>
     </section>
   );
@@ -475,19 +474,18 @@ function Approach() {
   return (
     <section id="approach" ref={sectionRef} className={isActive ? "section approach approachActive revealSection isRevealed" : "section approach revealSection"}>
       <div className="sectionIntro processIntro">
-        <Pill>How we work</Pill>
+        <Pill index="04">How we work</Pill>
         <h2>What happens when you reach out.</h2>
       </div>
       <div className="processTimeline" aria-label="How we work process">
         <div className="processLine" aria-hidden="true">
           <span />
         </div>
-        {steps.map(({ title, body, icon: Icon }, index) => (
+        {steps.map(({ title, body }, index) => (
           <article className="processStep" key={title} style={{ "--step-delay": `${420 + index * 420}ms` }}>
             <div className="processNode">
               <span className="processIcon">
                 <span className="stepNumber">{String(index + 1).padStart(2, "0")}</span>
-                <Icon size={21} />
               </span>
             </div>
             <div className="processText">
@@ -507,7 +505,7 @@ function Team() {
   return (
     <section id="team" ref={teamRef} className={isRevealed ? "section team revealSection isRevealed" : "section team revealSection"}>
       <div className="sectionIntro wide">
-        <Pill>The team</Pill>
+        <Pill index="05">The team</Pill>
         <h2>We've spent decades building and advising networked organisations and technology companies.</h2>
         <p>We work at the edge of what's becoming mainstream, not after it has.</p>
       </div>
@@ -542,7 +540,7 @@ function Audience() {
   return (
     <section ref={audienceRef} className={isRevealed ? "section audience revealSection isRevealed" : "section audience revealSection"}>
       <div className="audienceHeader">
-        <Pill>Who this is for</Pill>
+        <Pill index="06">Who this is for</Pill>
         <h2>For teams adopting AI under pressure.</h2>
         <p>
           We work with people holding several of these problems at once: something isn't working in how their people relate and decide, and they're adopting AI fast.
@@ -602,7 +600,7 @@ function Contact() {
     <section id="contact" ref={contactRef} className={isRevealed ? "section contactSection revealSection isRevealed" : "section contactSection revealSection"}>
       <div className="contactPanel">
         <div>
-          <Pill>Get in touch</Pill>
+          <Pill index="07">Contact</Pill>
           <h2>Talk to us.</h2>
           <p>
             If you're holding any of these problems at once: something isn't working in how your people relate and decide, and you're adopting AI fast. We'd like to hear from you.
@@ -615,7 +613,6 @@ function Contact() {
             <li><Check size={17} />If we can't, we'll point you somewhere useful.</li>
           </ul>
           <div className="buttonRow">
-            <a className="button primary" href={BOOK_CALL_URL}>Book a call</a>
             <a className="button secondary" href="mailto:hello@noumena-labs.org"><Mail size={18} />Email hello@noumena-labs.org</a>
             <a className="button tertiary" href={LITEPAPER_URL}>Read the Litepaper</a>
           </div>

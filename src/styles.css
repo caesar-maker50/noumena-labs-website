@@ -3565,6 +3565,513 @@ body::before,
   background: rgba(255, 255, 255, 0.03);
 }
 
+/* Black + muted gold refinement pass */
+body {
+  background:
+    radial-gradient(circle at 18% 8%, rgba(199, 168, 74, 0.038), transparent 18%),
+    radial-gradient(circle at 82% 14%, rgba(226, 199, 102, 0.018), transparent 20%),
+    linear-gradient(180deg, #070806 0%, #050604 44%, #090a08 100%);
+}
+
+body::before,
+#root::before {
+  opacity: 0.05;
+}
+
+.navWrap {
+  background: rgba(10, 11, 9, 0.76);
+  border-color: rgba(237, 235, 226, 0.12);
+}
+
+.navWrap nav,
+.heroText,
+.offering p,
+.programmeCard p,
+.person p,
+.contactPanel p,
+.audienceBody p,
+.audienceHeader p,
+.diagnosticCopy p,
+.offeringsCta p {
+  color: #a9a79c;
+}
+
+.brand,
+.heroPrimary,
+.sectionCenter h2 span:first-child,
+.problemIntro h2 span:first-child,
+.quotePanel p {
+  color: #edebe2;
+}
+
+.heroSecondary,
+.sectionCenter h2 span:last-child,
+.problemIntro h2 span,
+.pill,
+.thesisIndex,
+.category {
+  color: #c7a84a;
+}
+
+.section .pill,
+.sectionCloudGradient .pill,
+.section--organic-glow .pill,
+.contactPanel .pill,
+.audienceHeader .pill,
+.sectionIntro .pill,
+.problemIntro .pill {
+  color: #c7a84a;
+  border-color: rgba(199, 168, 74, 0.28);
+  background: rgba(199, 168, 74, 0.04);
+}
+
+.pill {
+  border-color: rgba(199, 168, 74, 0.28);
+  background: rgba(199, 168, 74, 0.04);
+  border-radius: 6px;
+  text-transform: uppercase;
+}
+
+.thesisRule {
+  background: linear-gradient(90deg, rgba(199, 168, 74, 0.4), rgba(199, 168, 74, 0.04));
+}
+
+.navCta,
+.button.primary,
+.contactActions .button.primary,
+.button.secondary,
+.button.tertiary,
+.contactActions .button.tertiary {
+  background-image: none;
+  box-shadow: none;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.84rem;
+}
+
+.navCta,
+.button.primary,
+.contactActions .button.primary {
+  background: rgba(199, 168, 74, 0.06);
+  border-color: rgba(199, 168, 74, 0.4);
+  color: #e2c766;
+}
+
+.navCta:hover,
+.button.primary:hover,
+.contactActions .button.primary:hover {
+  background: rgba(199, 168, 74, 0.1);
+  border-color: rgba(226, 199, 102, 0.62);
+  color: #f0de9a;
+}
+
+.button.secondary,
+.button.tertiary,
+.contactActions .button.tertiary {
+  background: rgba(255, 255, 255, 0.018);
+  border-color: rgba(237, 235, 226, 0.14);
+  color: #a9a79c;
+}
+
+.button.secondary:hover,
+.button.tertiary:hover,
+.contactActions .button.tertiary:hover {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(199, 168, 74, 0.32);
+  color: #edebe2;
+}
+
+.heroText em {
+  color: #c7a84a;
+  font-style: italic;
+}
+
+.hero::before,
+.hero::after,
+.heroBandWrap::before {
+  background: none;
+  filter: none;
+}
+
+.heroVisualCard.heroBand,
+.heroVisualCard.heroBand::before,
+.heroVisualCard.heroBand::after,
+.heroImage {
+  filter: none;
+}
+
+.heroVisualCard.heroBand::before,
+.heroVisualCard.heroBand::after {
+  content: none;
+}
+
+.heroVisualCard.heroBand .heroImage {
+  border-radius: 2px;
+  max-height: 300px;
+  object-position: center 46%;
+}
+
+.quotePanel,
+.offering,
+.programmeCard,
+.person,
+.contactPanel,
+.audienceVisualCard {
+  border-color: rgba(237, 235, 226, 0.12);
+  background:
+    linear-gradient(180deg, rgba(21, 22, 16, 0.96), rgba(13, 14, 11, 0.98));
+}
+
+.problem,
+.approach {
+  background:
+    radial-gradient(circle at 86% 12%, rgba(199, 168, 74, 0.04), transparent 30%),
+    rgba(5, 6, 4, 0.18);
+}
+
+.diagnosticSignal,
+.diagnosticSignal:last-child {
+  border-color: rgba(237, 235, 226, 0.12);
+}
+
+.diagnosticSignal.active .diagnosticNumber,
+.diagnosticSignal.active h3,
+.diagnosticSignal:hover .diagnosticNumber,
+.diagnosticSignal:hover h3 {
+  color: #c7a84a;
+}
+
+.diagnosticNumber {
+  color: rgba(237, 235, 226, 0.18);
+}
+
+.sectionCloudGradient,
+.section--organic-glow {
+  background:
+    radial-gradient(circle at 18% 35%, rgba(199, 168, 74, 0.09), transparent 26%),
+    radial-gradient(circle at 72% 26%, rgba(226, 199, 102, 0.045), transparent 24%),
+    radial-gradient(circle at 54% 82%, rgba(143, 122, 52, 0.05), transparent 20%),
+    #090a08;
+}
+
+.sectionCloudGradient::before,
+.section--organic-glow::before {
+  background:
+    radial-gradient(circle at 22% 42%, rgba(199, 168, 74, 0.14), transparent 24%),
+    radial-gradient(circle at 68% 48%, rgba(143, 122, 52, 0.12), transparent 26%),
+    radial-gradient(circle at 46% 72%, rgba(55, 199, 243, 0.04), transparent 20%);
+  opacity: 0.1;
+}
+
+.sectionCloudGradient::after,
+.section--organic-glow::after {
+  opacity: 0.05;
+}
+
+.softIcon {
+  background: rgba(199, 168, 74, 0.06);
+  color: #c7a84a;
+}
+
+.tags span {
+  border-color: rgba(237, 235, 226, 0.12);
+  background: rgba(255, 255, 255, 0.02);
+  color: #a9a79c;
+}
+
+.offeringsCta {
+  display: none;
+}
+
+.processLine {
+  background: rgba(237, 235, 226, 0.14);
+}
+
+.processLine span {
+  background: linear-gradient(90deg, rgba(199, 168, 74, 0.9), rgba(143, 122, 52, 0.9));
+}
+
+.processIcon {
+  width: 82px;
+  height: 82px;
+  border-color: rgba(237, 235, 226, 0.14);
+  background: rgba(255, 255, 255, 0.015);
+  color: rgba(199, 168, 74, 0.92);
+  box-shadow: none;
+}
+
+.approachActive .processIcon {
+  border-color: rgba(199, 168, 74, 0.3);
+  color: #e2c766;
+  box-shadow: none;
+}
+
+.processIcon svg {
+  display: none;
+}
+
+.stepNumber {
+  width: auto;
+  height: auto;
+  padding: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+  color: inherit;
+  font-size: 1.15rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.team {
+  position: relative;
+  overflow: hidden;
+}
+
+.team::before {
+  content: "";
+  position: absolute;
+  inset: 16% -8% 8%;
+  background:
+    radial-gradient(circle at 24% 48%, rgba(199, 168, 74, 0.08), transparent 22%),
+    radial-gradient(circle at 72% 30%, rgba(143, 122, 52, 0.06), transparent 24%),
+    radial-gradient(circle at 58% 74%, rgba(55, 199, 243, 0.025), transparent 18%);
+  filter: blur(54px);
+  pointer-events: none;
+}
+
+.team > * {
+  position: relative;
+  z-index: 1;
+}
+
+.audienceVisualCard {
+  background:
+    radial-gradient(circle at 20% 24%, rgba(226, 199, 102, 0.03), transparent 18%),
+    radial-gradient(circle at 34% 34%, rgba(199, 168, 74, 0.045), transparent 24%),
+    radial-gradient(circle at 72% 66%, rgba(55, 199, 243, 0.02), transparent 16%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.012)),
+    #090a08;
+}
+
+.aiFieldNetwork path {
+  stroke: rgba(199, 168, 74, 0.22);
+}
+
+.audienceVisualCard:hover .aiFieldNetwork path {
+  stroke: rgba(226, 199, 102, 0.34);
+}
+
+.contactPanel .buttonRow {
+  justify-content: flex-start;
+}
+
+/* Hierarchy and atmosphere refinement pass */
+.offeringGrid {
+  gap: 22px;
+}
+
+.offering {
+  padding: clamp(28px, 3.2vw, 38px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.035),
+    0 10px 24px rgba(0, 0, 0, 0.16);
+}
+
+.offering:hover,
+.programmeCard:hover,
+.person:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 16px 30px rgba(0, 0, 0, 0.2);
+}
+
+.programmeSection {
+  margin-top: 54px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(237, 235, 226, 0.1);
+}
+
+.programmeIntro {
+  margin-bottom: 22px;
+}
+
+.programGrid {
+  gap: 18px;
+}
+
+.programmeCard {
+  background:
+    linear-gradient(180deg, rgba(18, 19, 15, 0.94), rgba(12, 13, 10, 0.98));
+  border-color: rgba(237, 235, 226, 0.1);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.03),
+    0 8px 22px rgba(0, 0, 0, 0.14);
+}
+
+.programmeCard .pill {
+  opacity: 0.88;
+}
+
+.programmeCard h3 {
+  color: rgba(237, 235, 226, 0.94);
+}
+
+.programmeCard p,
+.programmeCard .tags span {
+  color: rgba(169, 167, 156, 0.82);
+}
+
+.programmeButton {
+  margin-top: 18px;
+}
+
+.team::before {
+  inset: 10% -6% -2%;
+  background:
+    radial-gradient(circle at 20% 46%, rgba(199, 168, 74, 0.085), transparent 20%),
+    radial-gradient(circle at 72% 30%, rgba(143, 122, 52, 0.065), transparent 22%),
+    radial-gradient(circle at 50% 66%, rgba(55, 199, 243, 0.024), transparent 14%),
+    radial-gradient(circle at 82% 72%, rgba(90, 96, 140, 0.022), transparent 14%);
+  filter: blur(60px);
+  animation: teamFieldDrift 26s ease-in-out infinite alternate;
+}
+
+.team::after {
+  content: "";
+  position: absolute;
+  inset: 18% 8% 8%;
+  background:
+    radial-gradient(circle at 24% 44%, rgba(237, 235, 226, 0.085) 0 1px, transparent 2px),
+    radial-gradient(circle at 58% 62%, rgba(199, 168, 74, 0.07) 0 1px, transparent 2px),
+    radial-gradient(circle at 74% 34%, rgba(237, 235, 226, 0.05) 0 1px, transparent 2px);
+  background-size: 132px 132px, 168px 168px, 144px 144px;
+  opacity: 0.12;
+  filter: blur(0.2px);
+  pointer-events: none;
+  animation: nodeFieldDrift 34s linear infinite;
+}
+
+.audience,
+.contactSection,
+.footer {
+  position: relative;
+}
+
+.audience::before,
+.contactSection::before,
+.footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.audience::before {
+  inset: 12% -8% -6%;
+  background:
+    radial-gradient(circle at 20% 24%, rgba(199, 168, 74, 0.05), transparent 18%),
+    radial-gradient(circle at 76% 62%, rgba(143, 122, 52, 0.045), transparent 20%);
+  filter: blur(54px);
+  opacity: 0.75;
+}
+
+.contactSection::before {
+  inset: 18% -4% -18%;
+  background:
+    radial-gradient(circle at 24% 42%, rgba(199, 168, 74, 0.045), transparent 18%),
+    radial-gradient(circle at 74% 64%, rgba(55, 199, 243, 0.018), transparent 16%);
+  filter: blur(50px);
+  opacity: 0.58;
+}
+
+.footer::before {
+  inset: -18% 0 0;
+  background: linear-gradient(180deg, rgba(199, 168, 74, 0.03), transparent 30%);
+  opacity: 0.7;
+}
+
+.contactPanel {
+  background:
+    linear-gradient(180deg, rgba(18, 19, 15, 0.92), rgba(10, 11, 9, 0.96));
+  box-shadow: none;
+}
+
+.contactActions ul {
+  color: rgba(169, 167, 156, 0.84);
+}
+
+.contactActions .buttonRow {
+  gap: 14px;
+}
+
+.contactActions .button.secondary,
+.contactActions .button.tertiary {
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #c7a84a;
+  font-size: 0.84rem;
+  letter-spacing: 0.08em;
+  box-shadow: none;
+}
+
+.contactActions .button.secondary:hover,
+.contactActions .button.tertiary:hover {
+  background: none;
+  color: #e2c766;
+  transform: none;
+}
+
+.processLine {
+  background: rgba(237, 235, 226, 0.1);
+}
+
+.processLine span {
+  background: linear-gradient(90deg, rgba(199, 168, 74, 0.7), rgba(143, 122, 52, 0.7));
+}
+
+.processIcon {
+  border-color: rgba(237, 235, 226, 0.12);
+  background: rgba(255, 255, 255, 0.012);
+}
+
+.approachActive .processIcon {
+  border-color: rgba(199, 168, 74, 0.22);
+}
+
+.diagnosticSignal.active {
+  opacity: 0.96;
+}
+
+.diagnosticSignal.past,
+.diagnosticSignal.upcoming {
+  opacity: 0.52;
+}
+
+@keyframes teamFieldDrift {
+  from {
+    transform: translate3d(-1%, 0, 0) scale(1);
+  }
+
+  to {
+    transform: translate3d(1.5%, -1%, 0) scale(1.03);
+  }
+}
+
+@keyframes nodeFieldDrift {
+  from {
+    background-position: 0 0, 0 0, 0 0;
+  }
+
+  to {
+    background-position: 42px 18px, -36px 24px, 28px -20px;
+  }
+}
+
 @media (max-width: 760px) {
   #root::after {
     height: 20px;
@@ -4024,7 +4531,9 @@ body::before,
   .aiFieldNetwork path,
   .sectionCloudGradient::before,
   .section--organic-glow::before,
-  .section--organic-glow::after {
+  .section--organic-glow::after,
+  .team::before,
+  .team::after {
     transition: none;
     animation: none;
   }
