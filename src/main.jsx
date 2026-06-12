@@ -6,19 +6,14 @@ import {
   ChevronDown,
   ChevronUp,
   Compass,
-  ClipboardCheck,
-  Handshake,
   Layers3,
   Mail,
-  MessageCircle,
   Network,
-  Search,
   ShieldCheck
 } from "lucide-react";
 import "./styles.css";
 
 const LITEPAPER_URL = "https://www.noumena-labs.org/lightpaper.html";
-const BOOK_CALL_URL = "https://cal.com/";
 const SHIP_IT_URL = "https://enspiral.github.io/forge/";
 
 const problems = [
@@ -86,26 +81,19 @@ const offerings = [
 const steps = [
   {
     title: "30-minute conversation",
-    body:
-      "We talk about what's actually going on. No pitch deck. If we can help, we'll tell you how. If we can't, we'll point you somewhere useful.",
-    icon: MessageCircle
+    body: "We talk about what's actually going on. No pitch deck. If we can help, we'll tell you how. If we can't, we'll point you somewhere useful."
   },
   {
     title: "Diagnosis",
-    body:
-      "We spend time understanding your specific situation before recommending anything. For many organisations this starts with an AI Work Readiness Diagnostic.",
-    icon: Search
+    body: "We spend time understanding your specific situation before recommending anything. For many organisations this starts with an AI Work Readiness Diagnostic."
   },
   {
     title: "A scoped engagement",
-    body:
-      "We work on a defined problem with a defined outcome, bringing in the right people from our network for what is needed.",
-    icon: ClipboardCheck
+    body: "We work on a defined problem with a defined outcome, bringing in the right people from our network for what is needed."
   },
   {
     title: "You own what we build",
-    body: "The goal is to leave your organisation more capable, not more dependent.",
-    icon: Handshake
+    body: "The goal is to leave your organisation more capable, not more dependent."
   }
 ];
 
@@ -182,25 +170,6 @@ function LinkedInMark() {
         d="M6.94 8.9H3.72v10.36h3.22V8.9ZM5.33 7.48c1.03 0 1.68-.68 1.68-1.54-.02-.88-.65-1.55-1.66-1.55-1 0-1.66.67-1.66 1.55 0 .86.64 1.54 1.62 1.54h.02ZM20.3 13.32c0-3.18-1.7-4.66-3.97-4.66-1.83 0-2.65 1.01-3.1 1.72V8.9H10c.04.97 0 10.36 0 10.36h3.22v-5.79c0-.31.02-.62.11-.84.23-.62.76-1.26 1.65-1.26 1.16 0 1.63.89 1.63 2.19v5.7h3.22l.47-5.94Z"
       />
     </svg>
-  );
-}
-
-function AbstractVisual({ compact = false }) {
-  return (
-    <div className={compact ? "abstractVisual compact" : "abstractVisual"} aria-label="Abstract Human × AI collaboration visual" role="img">
-      <div className="horizon" />
-      <div className="glass slabOne" />
-      <div className="glass slabTwo" />
-      <div className="bridge bridgeOne" />
-      <div className="bridge bridgeTwo" />
-      <div className="orb mainOrb" />
-      <div className="orb smallOrb" />
-      <div className="networkLine lineOne" />
-      <div className="networkLine lineTwo" />
-      <span className="node nodeOne" />
-      <span className="node nodeTwo" />
-      <span className="node nodeThree" />
-    </div>
   );
 }
 
@@ -412,18 +381,16 @@ function Offerings() {
         ))}
       </div>
       <div className="programmeSection">
-        <div className="programmeIntro">
+      <div className="programmeIntro">
           <Pill>Programmes</Pill>
         </div>
       <div className="programGrid">
         <article className="programmeCard">
-          <Pill>Programme</Pill>
           <h3>Ship It</h3>
           <p>Our 8-week programme for moving projects from stuck to shipped across open, organisation, and stakeholder cohorts.</p>
           <a className="button tertiary programmeButton" href={SHIP_IT_URL}>Read more</a>
         </article>
         <article className="programmeCard course">
-          <Pill>Course · 6 weeks</Pill>
           <h3>AI Level Up Course</h3>
           <p>
             A hands-on programme for individuals and teams moving from browser prompts to practical AI workflows. Taught by Joshua Vial. No coding experience required.
@@ -441,38 +408,68 @@ function Offerings() {
 function Approach() {
   const sectionRef = useRef(null);
   const [isActive, setIsActive] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [activeSteps, setActiveSteps] = useState(0);
 
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return undefined;
 
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion) {
+      setIsActive(true);
+      setProgress(1);
+      setActiveSteps(steps.length);
+      return undefined;
+    }
+
     if (window.location.hash === "#approach") {
       setIsActive(true);
+      setProgress(1);
+      setActiveSteps(steps.length);
       return undefined;
     }
 
-    const rect = section.getBoundingClientRect();
-    if (rect.top < window.innerHeight * 0.88 && rect.bottom > window.innerHeight * 0.08) {
-      setIsActive(true);
-      return undefined;
-    }
+    let frame = 0;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsActive(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.32 }
-    );
+    const updateProgress = () => {
+      frame = 0;
+      const rect = section.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      const start = viewportHeight * 0.86;
+      const end = viewportHeight * 0.18;
+      const travelled = start - rect.top;
+      const range = Math.max(1, start - end + rect.height * 0.45);
+      const nextProgress = Math.min(1, Math.max(0, travelled / range));
 
-    observer.observe(section);
-    return () => observer.disconnect();
+      setIsActive(nextProgress > 0.04);
+      setProgress(nextProgress);
+      setActiveSteps(Math.min(steps.length, Math.floor(nextProgress * steps.length + 0.2)));
+    };
+
+    const requestProgressUpdate = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(updateProgress);
+    };
+
+    updateProgress();
+    window.addEventListener("scroll", requestProgressUpdate, { passive: true });
+    window.addEventListener("resize", requestProgressUpdate);
+
+    return () => {
+      window.removeEventListener("scroll", requestProgressUpdate);
+      window.removeEventListener("resize", requestProgressUpdate);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
   }, []);
 
   return (
-    <section id="approach" ref={sectionRef} className={isActive ? "section approach approachActive revealSection isRevealed" : "section approach revealSection"}>
+    <section
+      id="approach"
+      ref={sectionRef}
+      className={isActive ? "section approach approachActive revealSection isRevealed" : "section approach revealSection"}
+      style={{ "--approach-progress": progress }}
+    >
       <div className="sectionIntro processIntro">
         <Pill index="04">How we work</Pill>
         <h2>What happens when you reach out.</h2>
@@ -482,7 +479,11 @@ function Approach() {
           <span />
         </div>
         {steps.map(({ title, body }, index) => (
-          <article className="processStep" key={title} style={{ "--step-delay": `${420 + index * 420}ms` }}>
+          <article
+            className={index < activeSteps ? "processStep processStepActive" : "processStep"}
+            key={title}
+            style={{ "--step-delay": `${260 + index * 320}ms` }}
+          >
             <div className="processNode">
               <span className="processIcon">
                 <span className="stepNumber">{String(index + 1).padStart(2, "0")}</span>
@@ -614,7 +615,6 @@ function Contact() {
           </ul>
           <div className="buttonRow">
             <a className="button secondary" href="mailto:hello@noumena-labs.org"><Mail size={18} />Email hello@noumena-labs.org</a>
-            <a className="button tertiary" href={LITEPAPER_URL}>Read the Litepaper</a>
           </div>
         </div>
       </div>
