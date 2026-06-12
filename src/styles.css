@@ -94,25 +94,36 @@ body::before {
 
 #root::before {
   z-index: -1;
-  width: min(72vw, 860px);
-  height: min(72vw, 860px);
-  right: -18vw;
-  top: 16vh;
-  border-radius: 42% 58% 54% 46% / 48% 42% 58% 52%;
+  width: min(78vw, 980px);
+  height: min(78vw, 980px);
+  right: -23vw;
+  top: 12vh;
+  border-radius: 45% 55% 62% 38% / 38% 48% 52% 62%;
   background:
-    radial-gradient(circle at 36% 32%, rgba(55, 199, 243, 0.06), transparent 15%),
-    radial-gradient(circle at 48% 44%, rgba(217, 70, 239, 0.08), transparent 25%),
-    radial-gradient(circle at 66% 58%, rgba(107, 46, 255, 0.055), transparent 28%),
-    radial-gradient(circle at 34% 70%, rgba(255, 122, 26, 0.045), transparent 22%),
-    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.024), transparent 54%);
+    radial-gradient(ellipse at 34% 28%, rgba(55, 199, 243, 0.075), transparent 13%),
+    radial-gradient(ellipse at 48% 44%, rgba(217, 70, 239, 0.105), transparent 24%),
+    radial-gradient(ellipse at 68% 58%, rgba(107, 46, 255, 0.065), transparent 27%),
+    radial-gradient(ellipse at 34% 72%, rgba(255, 122, 26, 0.07), transparent 18%),
+    conic-gradient(from 24deg at 51% 48%, rgba(255, 255, 255, 0.045), transparent 16%, rgba(217, 70, 239, 0.05), transparent 38%, rgba(55, 199, 243, 0.035), transparent 64%, rgba(255, 122, 26, 0.04), transparent 82%),
+    radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 0.026), transparent 58%);
   box-shadow:
-    inset 0 0 80px rgba(255, 255, 255, 0.035),
-    0 0 110px rgba(217, 70, 239, 0.035),
-    0 0 160px rgba(107, 46, 255, 0.026);
-  filter: blur(10px) saturate(1.08);
-  opacity: 0.16;
+    inset 0 0 0 1px rgba(255, 255, 255, 0.035),
+    inset 0 0 90px rgba(255, 255, 255, 0.026),
+    0 0 130px rgba(217, 70, 239, 0.034),
+    0 0 170px rgba(55, 199, 243, 0.018);
+  filter: blur(8px) saturate(1.12);
+  opacity: 0.2;
   animation: organicMembrane 34s cubic-bezier(0.22, 1, 0.36, 1) infinite alternate;
   will-change: transform, border-radius, opacity;
+}
+
+body::after {
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.94' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.13'/%3E%3C/svg%3E"),
+    linear-gradient(rgba(255, 255, 255, 0.014) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px);
+  background-size: 190px 190px, 64px 64px, 64px 64px;
+  opacity: 0.14;
 }
 
 #root::after {
@@ -129,20 +140,20 @@ body::before {
 @keyframes organicMembrane {
   0% {
     transform: translate3d(0, 0, 0) scale(0.98) rotate(-4deg);
-    border-radius: 42% 58% 54% 46% / 48% 42% 58% 52%;
-    opacity: 0.12;
+    border-radius: 45% 55% 62% 38% / 38% 48% 52% 62%;
+    opacity: 0.15;
   }
 
   45% {
-    transform: translate3d(-7vw, 18vh, 0) scale(1.06) rotate(5deg);
-    border-radius: 58% 42% 46% 54% / 42% 58% 44% 56%;
-    opacity: 0.18;
+    transform: translate3d(-8vw, 20vh, 0) scale(1.05) rotate(5deg);
+    border-radius: 58% 42% 44% 56% / 48% 59% 41% 52%;
+    opacity: 0.22;
   }
 
   100% {
-    transform: translate3d(-3vw, 48vh, 0) scale(1.02) rotate(-2deg);
-    border-radius: 48% 52% 60% 40% / 56% 44% 52% 48%;
-    opacity: 0.14;
+    transform: translate3d(-4vw, 50vh, 0) scale(1.02) rotate(-2deg);
+    border-radius: 38% 62% 52% 48% / 56% 40% 60% 44%;
+    opacity: 0.17;
   }
 }
 
@@ -2619,8 +2630,9 @@ h3 {
 
 .heroVisualCard {
   filter:
-    drop-shadow(0 30px 78px rgba(0, 0, 0, 0.52))
-    drop-shadow(0 0 44px rgba(217, 70, 239, 0.07));
+    drop-shadow(0 32px 84px rgba(0, 0, 0, 0.58))
+    drop-shadow(0 0 48px rgba(217, 70, 239, 0.055))
+    drop-shadow(0 0 92px rgba(55, 199, 243, 0.025));
 }
 
 .quotePanel,
@@ -2630,17 +2642,20 @@ h3 {
 .offering,
 .person,
 .contactPanel {
-  border-color: rgba(255, 255, 255, 0.105);
+  border-color: rgba(255, 255, 255, 0.135);
   background:
-    linear-gradient(150deg, rgba(255, 255, 255, 0.064), rgba(255, 255, 255, 0.028)),
-    rgba(13, 16, 26, 0.9);
+    linear-gradient(150deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.024)),
+    linear-gradient(180deg, rgba(18, 22, 36, 0.96), rgba(8, 10, 18, 0.96));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.055),
+    0 24px 70px rgba(0, 0, 0, 0.34);
 }
 
 .quotePanel {
   background:
-    radial-gradient(circle at 18% 18%, rgba(217, 70, 239, 0.035), transparent 34%),
-    linear-gradient(145deg, rgba(255, 255, 255, 0.058), rgba(255, 255, 255, 0.024)),
-    rgba(13, 16, 26, 0.92);
+    radial-gradient(circle at 18% 18%, rgba(217, 70, 239, 0.024), transparent 30%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.024)),
+    rgba(10, 13, 22, 0.96);
 }
 
 .problem,
@@ -2653,10 +2668,11 @@ h3 {
 .sectionCloudGradient,
 .section--organic-glow {
   background:
-    radial-gradient(circle at 18% 34%, rgba(217, 70, 239, 0.045), transparent 25%),
-    radial-gradient(circle at 76% 24%, rgba(107, 46, 255, 0.035), transparent 28%),
-    radial-gradient(circle at 56% 82%, rgba(255, 122, 26, 0.026), transparent 24%),
-    linear-gradient(145deg, #0d101a, #05070d 74%);
+    radial-gradient(circle at 18% 34%, rgba(217, 70, 239, 0.028), transparent 22%),
+    radial-gradient(circle at 76% 24%, rgba(55, 199, 243, 0.018), transparent 24%),
+    radial-gradient(circle at 56% 84%, rgba(255, 122, 26, 0.018), transparent 22%),
+    linear-gradient(145deg, #0b0e18, #05060a 76%);
+  border-color: rgba(255, 255, 255, 0.105);
 }
 
 .sectionCloudGradient::before,
@@ -2681,27 +2697,28 @@ h3 {
 .person,
 .contactPanel {
   background:
-    radial-gradient(circle at 86% 16%, rgba(217, 70, 239, 0.035), transparent 28%),
-    linear-gradient(150deg, rgba(255, 255, 255, 0.064), rgba(255, 255, 255, 0.026)),
-    rgba(16, 19, 33, 0.92);
+    radial-gradient(circle at 86% 16%, rgba(217, 70, 239, 0.022), transparent 25%),
+    linear-gradient(150deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.024)),
+    linear-gradient(180deg, rgba(18, 22, 36, 0.96), rgba(9, 11, 20, 0.96));
 }
 
 .offeringsCta,
 .impactStrip {
   background:
-    radial-gradient(circle at 18% 20%, rgba(217, 70, 239, 0.035), transparent 30%),
-    linear-gradient(145deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.024)),
-    rgba(13, 16, 26, 0.9);
-  border-color: rgba(255, 255, 255, 0.105);
+    radial-gradient(circle at 18% 20%, rgba(217, 70, 239, 0.024), transparent 28%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.024)),
+    rgba(10, 13, 22, 0.94);
+  border-color: rgba(255, 255, 255, 0.13);
 }
 
 .audienceVisualCard {
   background:
-    radial-gradient(circle at 20% 24%, rgba(55, 199, 243, 0.035), transparent 22%),
-    radial-gradient(circle at 30% 28%, rgba(217, 70, 239, 0.055), transparent 28%),
-    radial-gradient(circle at 82% 72%, rgba(107, 46, 255, 0.045), transparent 34%),
-    linear-gradient(145deg, rgba(255, 255, 255, 0.054), rgba(255, 255, 255, 0.022)),
-    #0d101a;
+    radial-gradient(circle at 20% 24%, rgba(55, 199, 243, 0.045), transparent 20%),
+    radial-gradient(circle at 34% 34%, rgba(217, 70, 239, 0.06), transparent 24%),
+    radial-gradient(circle at 72% 66%, rgba(255, 122, 26, 0.032), transparent 20%),
+    radial-gradient(circle at 82% 72%, rgba(107, 46, 255, 0.04), transparent 30%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.058), rgba(255, 255, 255, 0.02)),
+    #0b0e18;
 }
 
 .audienceVisualCard::before {
@@ -2766,7 +2783,29 @@ h3 {
 .processText p,
 .audienceBody p,
 .contactPanel p {
-  color: rgba(178, 175, 192, 0.92);
+  color: rgba(184, 180, 196, 0.94);
+}
+
+.heroText,
+.sectionIntro p:not(.pill),
+.sectionCenter p,
+.audienceHeader p,
+.offeringsCta p {
+  color: rgba(184, 180, 196, 0.92);
+}
+
+.pill,
+.category {
+  color: rgba(245, 210, 255, 0.9);
+}
+
+.logoTile {
+  background: rgba(255, 255, 255, 0.075);
+  border-color: rgba(255, 255, 255, 0.13);
+}
+
+.logoTile img {
+  filter: saturate(0.92) brightness(1.16) contrast(1.04);
 }
 
 @media (max-width: 760px) {
